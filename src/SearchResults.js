@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 
-class ListBooks extends Component {
+class SearchResults extends Component {
   render() {
     return (
       <div className="search-books-results">
@@ -11,4 +11,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks;
+export default SearchResults;

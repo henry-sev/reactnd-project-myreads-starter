@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
-import ListBooks from './ListBooks';
+import SearchResults from './SearchResults';
 
 class SearchBooks extends Component {
   render() {
     return (
       <div className="search-books">
         <SearchBar />
-        <ListBooks />
+        <SearchResults />
       </div>
     )
   }

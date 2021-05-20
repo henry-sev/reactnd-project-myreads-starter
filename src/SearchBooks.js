@@ -4,6 +4,10 @@ import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
 class SearchBooks extends Component {
+  state = {
+    query: '',
+  }
+  
   render() {
     return (
       <div className="search-books">

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class Book extends Component {
   handleUpdateShelf = (e) => {
@@ -39,6 +40,11 @@ class Book extends Component {
       </li>
     )
   }
+}
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  onUpdateShelf: PropTypes.func.isRequired,
 }
 
 export default Book;

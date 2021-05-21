@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import * as BooksAPI from './BooksAPI';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
@@ -11,8 +11,8 @@ class SearchBooks extends Component {
   }
 
   handleUpdateInput = (value) => {
-    this.setState({query: value.trim()});
-    BooksAPI.search(value.trim())
+    this.setState({query: value});
+    BooksAPI.search(value)
       .then(books => {
         if(Array.isArray(books)) {
           this.setState({searchResultBooks: books});
@@ -37,6 +37,11 @@ class SearchBooks extends Component {
       </div>
     )
   }
+}
+
+SearchBooks.propTypes = {
+  onUpdateShelf: PropTypes.func.isRequired,
+  booksInShelf: PropTypes.array.isRequired,
 }
 
 export default SearchBooks;

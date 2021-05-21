@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 class SearchBar extends Component {
   handleUpdateInput = (value) => {
     this.props.onUpdateInput(value);
   }
-  
+
   render() {
     const {query} = this.props;
     return (
@@ -34,6 +34,11 @@ class SearchBar extends Component {
       </div>
     )
   }
+}
+
+SearchBar.propTypes = {
+  query: PropTypes.string.isRequired,
+  onUpdateInput: PropTypes.func.isRequired,
 }
 
 export default SearchBar;

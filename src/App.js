@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-// import * as BooksAPI from './BooksAPI';
+import * as BooksAPI from './BooksAPI';
 import './App.css';
 import SearchBooks from './SearchBooks';
 import ListBooks from './ListBooks';
@@ -10,6 +10,14 @@ class BooksApp extends React.Component {
     currentlyReading: [],
     wantToRead: [],
     read: [],
+    booksInShelves: [],
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll()
+      .then(books => {
+        this.setState({booksInShelves: books})
+      })
   }
 
   handleUpdateShelf = (shelf, book) => {
@@ -36,7 +44,10 @@ class BooksApp extends React.Component {
       <BrowserRouter>
         <div className="app">
           <Route exact path="/" render={() => (
-            <ListBooks books={this.state} />
+            <ListBooks 
+              // books={this.state} 
+              books={this.state.booksInShelves}
+            />
             )}
           />
           <Route path="/search" render={() => (

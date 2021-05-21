@@ -20,10 +20,10 @@ class BooksApp extends React.Component {
   handleUpdateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
       .then(() => {
-        book.shelf = shelf
-        this.setState(currentState => ({
-          booksInShelves: currentState.booksInShelves.concat(book),
-        }));
+        BooksAPI.getAll()
+          .then(books => {
+            this.setState({booksInShelves: books})
+          })
       })
   }
 
@@ -34,6 +34,7 @@ class BooksApp extends React.Component {
           <Route exact path="/" render={() => (
             <ListBooks 
               books={this.state.booksInShelves}
+              onUpdateShelf={this.handleUpdateShelf}
             />
             )}
           />

@@ -5,6 +5,13 @@ class Book extends Component {
     this.props.onUpdateShelf(this.props.book, e.target.value);
   }
 
+  isSelected = (e) => {
+    if (this.props.book.shelf === e.target.value) {
+      return true;
+    }
+    return false
+  }
+
   render() {
     const {book} = this.props;
     return (
@@ -18,7 +25,7 @@ class Book extends Component {
             }
             
             <div className="book-shelf-changer">
-              <select onChange={this.handleUpdateShelf}>
+              <select onChange={this.handleUpdateShelf} value={book.shelf}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>

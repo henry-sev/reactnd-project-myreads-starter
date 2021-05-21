@@ -17,10 +17,14 @@ class BooksApp extends React.Component {
       })
   }
 
-  handleUpdateShelf = (book) => {
-    this.setState(currentState => ({
-      booksInShelves: currentState.booksInShelves.concat(book),
-    }))
+  handleUpdateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+      .then(() => {
+        book.shelf = shelf
+        this.setState(currentState => ({
+          booksInShelves: currentState.booksInShelves.concat(book),
+        }));
+      })
   }
 
   render() {

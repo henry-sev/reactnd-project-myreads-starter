@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 
 class Book extends Component {
   handleUpdateShelf = (e) => {
-    const book = this.props.book;
-    book.shelf = e.target.value;
-    this.props.onUpdateShelf(book)
+    this.props.onUpdateShelf(this.props.book, e.target.value);
   }
 
   render() {

@@ -7,9 +7,6 @@ import ListBooks from './ListBooks';
 
 class BooksApp extends React.Component {
   state = {
-    currentlyReading: [],
-    wantToRead: [],
-    read: [],
     booksInShelves: [],
   }
 
@@ -20,23 +17,10 @@ class BooksApp extends React.Component {
       })
   }
 
-  handleUpdateShelf = (shelf, book) => {
-    if (shelf === "currentlyReading") {
-      this.setState(currentState => ({
-        currentlyReading: currentState.currentlyReading.concat(book),
-      }))
-    } 
-    else if (shelf === "wantToRead") {
-      this.setState(currentState => ({
-        wantToRead: currentState.wantToRead.concat(book),
-      }))
-    }
-    else if (shelf === "read") {
-      this.setState(currentState => ({
-        read: currentState.read.concat(book),
-      }))
-    }
-    
+  handleUpdateShelf = (book) => {
+    this.setState(currentState => ({
+      booksInShelves: currentState.booksInShelves.concat(book),
+    }))
   }
 
   render() {
@@ -45,7 +29,6 @@ class BooksApp extends React.Component {
         <div className="app">
           <Route exact path="/" render={() => (
             <ListBooks 
-              // books={this.state} 
               books={this.state.booksInShelves}
             />
             )}

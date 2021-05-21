@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 
 class Book extends Component {
   handleUpdateShelf = (e) => {
-    console.log(e.target.value)
-    this.props.onUpdateShelf(e.target.value, [this.props.book])
+    const book = this.props.book;
+    book.shelf = e.target.value;
+    this.props.onUpdateShelf(book)
   }
 
   render() {
@@ -21,9 +22,9 @@ class Book extends Component {
             <div className="book-shelf-changer">
               <select onChange={this.handleUpdateShelf}>
                 <option value="move" disabled>Move to...</option>
-                <option value="currentlyReading" onChange={this.handleUpdateShelf}>Currently Reading</option>
-                <option value="wantToRead" onChange={this.handleUpdateShelf}>Want to Read</option>
-                <option value="read" onChange={this.handleUpdateShelf}>Read</option>
+                <option value="currentlyReading">Currently Reading</option>
+                <option value="wantToRead">Want to Read</option>
+                <option value="read">Read</option>
                 <option value="none">None</option>
               </select>
             </div>

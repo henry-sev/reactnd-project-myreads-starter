@@ -6,6 +6,7 @@ class SearchBar extends Component {
   handleUpdateInput = (value) => {
     this.props.onUpdateInput(value);
   }
+  
   render() {
     const {query} = this.props;
     return (
@@ -25,9 +26,7 @@ class SearchBar extends Component {
           <input 
             type="text" 
             value={query} 
-            onChange={(e) => {
-              this.handleUpdateInput(e.target.value);
-            }} 
+            onChange={(e) => { this.handleUpdateInput(e.target.value); }} 
             placeholder="Search by title or author"
           />
 

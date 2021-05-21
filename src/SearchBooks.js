@@ -32,6 +32,7 @@ class SearchBooks extends Component {
         <SearchResults 
           books={this.state.searchResultBooks}
           onUpdateShelf={this.props.onUpdateShelf}
+          booksInShelf={this.props.booksInShelf}
         />
       </div>
     )

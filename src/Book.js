@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 
 class Book extends Component {
+  handleUpdateShelf = (e) => {
+    console.log(e.target.value)
+    this.props.onUpdateShelf(e.target.value, [this.props.book])
+  }
+
   render() {
     const {book} = this.props;
     return (
@@ -9,11 +14,11 @@ class Book extends Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
             <div className="book-shelf-changer">
-              <select>
+              <select onChange={this.handleUpdateShelf}>
                 <option value="move" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
+                <option value="currentlyReading" onChange={this.handleUpdateShelf}>Currently Reading</option>
+                <option value="wantToRead" onChange={this.handleUpdateShelf}>Want to Read</option>
+                <option value="read" onChange={this.handleUpdateShelf}>Read</option>
                 <option value="none">None</option>
               </select>
             </div>
@@ -23,7 +28,7 @@ class Book extends Component {
             {
               book.authors ? book.authors.map(author => (
                 <div key={author}>{author}</div>
-              )) : '未查找到书籍'
+              )) : ''
             }
           </div>
         </div>

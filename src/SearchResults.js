@@ -4,12 +4,16 @@ import Book from './Book'
 
 class SearchResults extends Component {
   render() {
-    const {books} = this.props;
+    const {books, onUpdateShelf} = this.props;
     return (
       <div className="search-books-results">
         <ol className="books-grid">
           {books.map((book) => (
-            <Book key={book.id} book={book} />
+            <Book 
+              key={book.id} 
+              book={book} 
+              onUpdateShelf={onUpdateShelf}
+            />
           ))}
         </ol>
       </div>

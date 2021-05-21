@@ -7,9 +7,28 @@ import ListBooks from './ListBooks';
 
 class BooksApp extends React.Component {
   state = {
-    currentReadingBooks: [],
-    wantToReadBooks: [],
-    readBooks: [],
+    currentlyReading: [],
+    wantToRead: [],
+    read: [],
+  }
+
+  handleUpdateShelf = (shelf, book) => {
+    if (shelf === "currentlyReading") {
+      this.setState(currentState => ({
+        currentlyReading: currentState.currentlyReading.concat(book),
+      }))
+    } 
+    else if (shelf === "wantToRead") {
+      this.setState(currentState => ({
+        wantToRead: currentState.wantToRead.concat(book),
+      }))
+    }
+    else if (shelf === "read") {
+      this.setState(currentState => ({
+        read: currentState.read.concat(book),
+      }))
+    }
+    
   }
 
   render() {
@@ -20,12 +39,9 @@ class BooksApp extends React.Component {
             <ListBooks books={this.state} />
             )}
           />
-          <Route path="/search" component={SearchBooks} />
-          {/* {this.state.showSearchPage ? (
-            <SearchBooks />
-          ) : (
-            <ListBooks />
-          )} */}
+          <Route path="/search" render={() => (
+            <SearchBooks onUpdateShelf={this.handleUpdateShelf} />
+          )} />
         </div>
       </BrowserRouter>
       

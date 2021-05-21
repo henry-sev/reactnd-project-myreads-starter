@@ -29,7 +29,10 @@ class SearchBooks extends Component {
           query={this.state.query} 
           onUpdateInput={this.handleUpdateInput} 
         />
-        <SearchResults books={this.state.searchResultBooks} />
+        <SearchResults 
+          books={this.state.searchResultBooks}
+          onUpdateShelf={this.props.onUpdateShelf}
+        />
       </div>
     )
   }

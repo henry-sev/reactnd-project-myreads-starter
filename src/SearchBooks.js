@@ -14,9 +14,11 @@ class SearchBooks extends Component {
     this.setState({query: value.trim()});
     BooksAPI.search(value.trim())
       .then(books => {
-        console.log('query:' + value);
-        this.setState({searchResultBooks: books});
-        console.log(books);
+        if(Array.isArray(books)) {
+          this.setState({searchResultBooks: books});
+        } else {
+          this.setState({searchResultBooks: []});
+        }
       })
   }    
 
@@ -26,7 +28,6 @@ class SearchBooks extends Component {
         <SearchBar 
           query={this.state.query} 
           onUpdateInput={this.handleUpdateInput} 
-          onSearchBooks={this.searchBooks}
         />
         <SearchResults books={this.state.searchResultBooks} />
       </div>

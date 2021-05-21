@@ -7,7 +7,7 @@ class SearchBar extends Component {
     this.props.onUpdateInput(value);
   }
   render() {
-    const {query, onSearchBooks} = this.props;
+    const {query} = this.props;
     return (
       <div className="search-books-bar">
         <Link to="/">

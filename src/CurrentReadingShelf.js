@@ -44,7 +44,7 @@ class CurrentReadingShelf extends Component {
                 <div className="book-authors">Orson Scott Card</div>
               </div>
             </li>
-            <Book />
+            {/* <Book /> */}
           </ol>
         </div>
       </div>

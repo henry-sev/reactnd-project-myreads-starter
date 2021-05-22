@@ -10,14 +10,18 @@ class SearchBooks extends Component {
   }
 
   handleUpdateInput = (value) => {
-    BooksAPI.search(value)
-      .then(books => {
-        if(Array.isArray(books)) {
-          this.setState({searchResultBooks: books});
-        } else {
-          this.setState({searchResultBooks: []});
-        }
-      })
+    if (value) {
+      BooksAPI.search(value)
+        .then(books => {
+          if(Array.isArray(books)) {
+            this.setState({searchResultBooks: books});
+          } else {
+            this.setState({searchResultBooks: []});
+          }
+        })
+    } else {
+      this.setState({searchResultBooks: []});
+    }
   }    
 
   render() {

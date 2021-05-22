@@ -8,7 +8,6 @@ class SearchBar extends Component {
   }
 
   render() {
-    const {query} = this.props;
     return (
       <div className="search-books-bar">
         <Link to="/">
@@ -25,7 +24,6 @@ class SearchBar extends Component {
           */}
           <input 
             type="text" 
-            value={query} 
             onChange={(e) => { this.handleUpdateInput(e.target.value); }} 
             placeholder="Search by title or author"
           />
@@ -37,7 +35,6 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  query: PropTypes.string.isRequired,
   onUpdateInput: PropTypes.func.isRequired,
 }
 

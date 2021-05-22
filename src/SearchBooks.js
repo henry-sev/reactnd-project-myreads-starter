@@ -6,12 +6,10 @@ import SearchResults from './SearchResults';
 
 class SearchBooks extends Component {
   state = {
-    query: '',
     searchResultBooks: [],
   }
 
   handleUpdateInput = (value) => {
-    this.setState({query: value});
     BooksAPI.search(value)
       .then(books => {
         if(Array.isArray(books)) {
@@ -26,7 +24,6 @@ class SearchBooks extends Component {
     return (
       <div className="search-books">
         <SearchBar 
-          query={this.state.query} 
           onUpdateInput={this.handleUpdateInput} 
         />
         <SearchResults 

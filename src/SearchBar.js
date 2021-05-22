@@ -30,8 +30,6 @@ class SearchBar extends Component {
               placeholder="Search by title or author"
             />
           </Debounce>
-          
-
         </div>
       </div>
     )

@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import CurrentReadingShelf from './CurrentReadingShelf';
-import WantToReadShelf from './WantToReadShelf';
-import ReadShelf from './ReadShelf';
+import Shelf from './Shelf';
 
 class ListBooks extends Component {
   render() {
     const {books, onUpdateShelf} = this.props;
-    const currentlyReading = books.filter(book => book.shelf === "currentlyReading");
-    const wantToRead = books.filter(book => book.shelf === "wantToRead");
-    const read = books.filter(book => book.shelf === "read");
+    const shelves = [
+      {title: "Currently Reading", shelf: "currentlyReading"},
+      {title: "Want to Read", shelf: "wantToRead"},
+      {title: "Read", shelf: "read"},
+    ]
 
     return (
       <div className="list-books">
@@ -18,20 +18,16 @@ class ListBooks extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <div>
-            <CurrentReadingShelf 
-              books={currentlyReading}
-              onUpdateShelf={onUpdateShelf}
-            />
-            <WantToReadShelf 
-              books={wantToRead}
-              onUpdateShelf={onUpdateShelf}
-            />
-            <ReadShelf 
-              books={read}
-              onUpdateShelf={onUpdateShelf}
-            />
-          </div>
+          {
+            shelves.map(shelf => (
+              <Shelf 
+                key={shelf.shelf}
+                shelf={shelf}
+                books={books.filter(book => book.shelf === shelf.shelf)}
+                onUpdateShelf={onUpdateShelf}
+              />
+            ))
+          }
         </div>
         <div className="open-search">
           <Link to="/search">

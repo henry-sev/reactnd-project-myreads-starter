@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Debounce} from 'react-throttle';
 import {Link} from 'react-router-dom';
 
 class SearchBar extends Component {
@@ -22,11 +23,14 @@ class SearchBar extends Component {
             However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
             you don't find a specific author or title. Every search is limited by search terms.
           */}
-          <input 
-            type="text" 
-            onChange={(e) => { this.handleUpdateInput(e.target.value); }} 
-            placeholder="Search by title or author"
-          />
+          <Debounce time="400" handler="onChange">
+            <input 
+              type="text" 
+              onChange={(e) => { this.handleUpdateInput(e.target.value); }} 
+              placeholder="Search by title or author"
+            />
+          </Debounce>
+          
 
         </div>
       </div>
